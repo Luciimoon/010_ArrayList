@@ -1,15 +1,13 @@
 package arraylist;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 import javax.swing.JOptionPane;
 
 public class StudentFirstNames {
 
-	Scanner kbd = new Scanner(System.in);
-	// String name = "";
-	int test = 0;
+
 
 	private ArrayList<String> a2Students = new ArrayList<String>();
 
@@ -24,10 +22,9 @@ public class StudentFirstNames {
 
 	public void Ask() {
 
-		System.out.println("Please enter your name.");
-
-		String entry = kbd.nextLine();
-
+		
+		String entry = JOptionPane.showInputDialog("Please enter a name.");
+	
 		if (a2Students.indexOf(entry) < 0) {
 			a2Students.add(entry);
 
@@ -43,10 +40,27 @@ public class StudentFirstNames {
 	}
 
 	public void StudentList() {
-		System.out.println("Student names: " + a2Students);
+		
+		int i = 0;
+		
+		StringBuilder output = new StringBuilder("All student names: \n");
 
-		for (int i = 0; i < a2Students.size(); i++)
-			System.out.println(a2Students.get(i));
+		for ( i = 0; i < a2Students.size(); i++) {
+
+			output.append(a2Students.get(i) + "\n");
+
+		}
+
+		output.append("");
+		JOptionPane.showMessageDialog(null, output);
+		
+		
+		
+		
+		//System.out.println("Student names: " + a2Students);
+
+		//for (int i = 0; i < a2Students.size(); i++)
+			//System.out.println(a2Students.get(i));
 
 	}
 
@@ -63,9 +77,9 @@ public class StudentFirstNames {
 
 	public void removeName() {
 
-		System.out.println("what name do you want to remove?");
-		String name = kbd.nextLine();
-
+		
+		String name = JOptionPane.showInputDialog("what name do you want to remove?");
+	
 		if (a2Students.indexOf(name) > 0)
 			a2Students.remove(name);
 		else
@@ -75,16 +89,17 @@ public class StudentFirstNames {
 
 	public void ReplaceName() {
 
-		System.out.println("What name do you want to replace");
-		String name = kbd.nextLine();
+		
+		String name = JOptionPane.showInputDialog("what name do you want to replace?");
+		
 		int index = a2Students.indexOf(name);
 		if (index == -1) {
 			System.out.println("name not on list");
 			return;
 		}
 
-		System.out.println("what do you want to replace it with?");
-		name = kbd.nextLine();
+		 name = JOptionPane.showInputDialog("What do you want to replce it with?");
+		
 		a2Students.set(index, name);
 
 	}
